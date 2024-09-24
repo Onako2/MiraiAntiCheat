@@ -12,6 +12,7 @@ import rs.onako2.mac.listener.PacketListener;
 public final class Main extends JavaPlugin {
 
     FileConfiguration config = getConfig();
+
     @Override
     public void onLoad() {
         PacketEvents.setAPI(SpigotPacketEventsBuilder.build(this));

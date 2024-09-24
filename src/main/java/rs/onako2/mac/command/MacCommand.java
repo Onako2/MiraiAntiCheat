@@ -9,7 +9,7 @@ import rs.onako2.mac.Main;
 public class MacCommand implements CommandExecutor {
 
 
-    private Plugin plugin;
+    private final Plugin plugin;
 
     public MacCommand(Main main) {
         this.plugin = main;

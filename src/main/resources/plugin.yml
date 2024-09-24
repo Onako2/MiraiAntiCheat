@@ -11,7 +11,7 @@ commands:
     description: Mirai Anti Cheat command
     usage: /mac
     permission: mac.command
-    aliases: [miraianticheat]
+    aliases: [ miraianticheat ]
 
 permissions:
   mac.command:
