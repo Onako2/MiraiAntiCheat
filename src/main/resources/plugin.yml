@@ -1,0 +1,19 @@
+name: MiraiAntiCheat
+version: '1.0'
+main: rs.onako2.mac.Main
+api-version: '1.8'
+prefix: MAC
+authors: [ Onako2, Vekster ]
+description: Mirai Anti Cheat
+depend: [ packetevents ]
+commands:
+  mac:
+    description: Mirai Anti Cheat command
+    usage: /mac
+    permission: mac.command
+    aliases: [miraianticheat]
+
+permissions:
+  mac.command:
+    description: Allows access to the Mirai Anti Cheat command
+    default: true

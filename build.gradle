@@ -1,0 +1,54 @@
+plugins {
+    //id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'java'
+    id("xyz.jpenilla.run-paper") version "2.3.1"
+}
+
+group = 'rs.onako2'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.papermc.io/repository/maven-public/" }
+    maven {
+        name = "sonatype"
+        url = "https://oss.sonatype.org/content/groups/public/"
+    }
+    // Floodgate
+    maven { url "https://repo.opencollab.dev/main/" }
+    // PacketEvents
+    maven { url = "https://repo.codemc.io/repository/maven-releases/" }
+}
+
+dependencies {
+    compileOnly("org.github.paperspigot:paperspigot-api:1.8.8-R0.1-SNAPSHOT")
+    compileOnly("com.github.retrooper:packetevents-spigot:2.5.0")
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}
+
+tasks {
+    runServer {
+        downloadPlugins {
+            url("https://github.com/retrooper/packetevents/releases/download/v2.5.0/packetevents-spigot-2.5.0.jar")
+        }
+        minecraftVersion("1.8.8")
+    }
+}
